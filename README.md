@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Flight Status Application
+This project consists of a frontend React application and a backend Spring Boot API. The application provides real-time flight status updates and allows users to subscribe to email notifications for specific flight status changes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Frontend (React Application)  
+The React application displays all flight statuses on the homepage. Users can subscribe to receive updates on flight status changes via email.
 
-## Available Scripts
+# Features
+Homepage: Displays all flights and their statuses.
+Subscription: Users can enter their email addresses to subscribe to updates for specific flights. A confirmation email is sent upon subscription, and users will receive notifications for any status changes related to the subscribed flight.
+Backend (Spring Boot Flights API)
+The backend is a Spring Boot application that provides RESTful APIs for managing flight data and handling user subscriptions. It interacts with a PostgreSQL database to store flight and user information.
 
-In the project directory, you can run:
+![image](https://github.com/user-attachments/assets/9d141502-3db0-4525-9854-5bc7c7cc0df9)
 
-### `npm start`
+![image](https://github.com/user-attachments/assets/f7305575-281e-44f4-b28a-0d39c45bcd32)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![image](https://github.com/user-attachments/assets/0c9d3e78-2bc5-4bac-9943-5e6cad402f57)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Email Notifications: 
 
-### `npm test`
+![image](https://github.com/user-attachments/assets/6c4c57df-2e98-4e9f-b7bb-380f507c4815)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/user-attachments/assets/54ed5ec9-e059-45b5-819f-b2164217c8e9)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Important Endpoints
+Get All Flights
+# Endpoint: GET /
+Description: Retrieves all flight data from the PostgreSQL database.
+![image](https://github.com/user-attachments/assets/22499066-3f28-4c1a-a503-c500ec169830)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a New Flight
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Endpoint: POST /
+Description: Creates a new flight record in the flights table of the PostgreSQL database.
+Subscribe to Flight Updates
 
-### `npm run eject`
+![image](https://github.com/user-attachments/assets/ee59e559-cd65-4857-a2cf-0bc1f753c8c7)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Endpoint: POST /subscribe
+Description: Creates a new user subscription for flight status changes. Requires the flight number in the user data.
+![image](https://github.com/user-attachments/assets/e3c4bb67-b081-4ddf-b701-477320a54291)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Other CRUD Operations
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Delete Flight: Deletes a flight record by its ID or number.
+Update Flight: Updates a flight record by its ID or number.
+### Email Notification Service
+The application includes an email service implemented using Java Mail dependency and JavaMailSender class. Users subscribed to flight updates receive email notifications when there are changes in the flight status or gate information.
 
-## Learn More
+### Update Notification Logic
+When a flight is updated, the system checks for changes in the status or gate. If there are any changes, all users subscribed to that flight number are notified via email.
+![image](https://github.com/user-attachments/assets/b6df56b0-1070-4851-9548-4d950a2f2d0b)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Backend Tech Stack
+Spring Boot: Framework for building the backend API.
+PostgreSQL: Database for storing flight and user data.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
